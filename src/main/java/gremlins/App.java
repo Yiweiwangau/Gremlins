@@ -73,15 +73,41 @@ public class App extends PApplet {
         //this.fireball = loadImage(this.getClass().getResource("fireball.png").getPath().replace("%20", " "));
         char[][] layoutArray = readLayout("level1.txt");
         wizard.findPlayerPosition(layoutArray);
+        findGremlinPosition(layoutArray);
 
-//        All four gremlins must be placed in different positions.
-
-
-//        gremlin3.findGremlinPosition(layoutArray);
-//        gremlin4.findGremlinPosition(layoutArray);
         JSONObject conf = loadJSONObject(new File(this.configPath));
 
     }
+
+        /**
+         * read layoutArray and find all i and j index of 4 occurrence of G and store in a 2D array. Then assign the i and j in the 2d array to the gremlin object.
+         */
+    public void findGremlinPosition(char[][] layoutArray) {
+        int[][] gremlinPosition = new int[4][2];
+        int count = 0;
+        for (int i = 0; i<layoutArray.length; i++) {
+            for (int j = 0; j<layoutArray[i].length; j++) {
+                if (layoutArray[i][j] == 'G') {
+                    gremlinPosition[count][0] = j;
+                    gremlinPosition[count][1] = i;
+                    count++;
+                }
+            }
+        }
+        for (int i = 0; i<gremlinPosition.length; i++) {
+            for (int j = 0; j<gremlinPosition[i].length; j++) {
+                System.out.println(gremlinPosition[i][j]);
+            }
+        }
+        for (int i = 0; i<gremlins.length; i++) {
+            gremlins[i].setX(gremlinPosition[i][0]*SPRITESIZE);
+            gremlins[i].setY(gremlinPosition[i][1]*SPRITESIZE);
+        }
+    }
+
+
+         
+    
 
     /**
      * Receive key pressed signal from the keyboard
@@ -150,27 +176,31 @@ public class App extends PApplet {
     public void draw() {
         background(191, 153, 114);
         char[][] layoutArray = readLayout("level1.txt");
-        for (int i = 0; i < layoutArray.length; i++) {
-            for (int j = 0; j < layoutArray[i].length; j++) {
-                if (layoutArray[i][j] == 'X') {
-                    image(stonewall, j * SPRITESIZE, i * SPRITESIZE);
-                } else if (layoutArray[i][j] == 'B') {
-                    image(brickwall, j* SPRITESIZE, i * SPRITESIZE);
-                }
-            }
-        }
+        drawWall(layoutArray);
 
         wizard.draw(this);
         gremlin1.draw(this);
         gremlin2.draw(this);
-//        gremlin3.draw(this);
-//        gremlin4.draw(this);
+        gremlin3.draw(this);
+        gremlin4.draw(this);
 
 
 
     }
 
-    public static void main(String[] args) {
+        private void drawWall(char[][] layoutArray) {
+            for (int i = 0; i < layoutArray.length; i++) {
+                for (int j = 0; j < layoutArray[i].length; j++) {
+                    if (layoutArray[i][j] == 'X') {
+                        image(stonewall, j * SPRITESIZE, i * SPRITESIZE);
+                    } else if (layoutArray[i][j] == 'B') {
+                        image(brickwall, j* SPRITESIZE, i * SPRITESIZE);
+                    }
+                }
+            }
+        }
+
+        public static void main(String[] args) {
         PApplet.main("gremlins.App");
     }
 }

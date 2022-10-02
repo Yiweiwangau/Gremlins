@@ -17,6 +17,15 @@ public class Gremlin {
         this.GremlinY = GremlinY;
     }
 
+    public void setX(int GremlinX){
+        this.GremlinX = GremlinX;
+    }
+
+    public void setY(int GremlinY){
+        this.GremlinY = GremlinY;
+    }
+
+
     public void findNewDirection(char[][] layoutArray) {
         int randomDirection = randomGenerator.nextInt(4);
         if (randomDirection == 0) {
@@ -46,17 +55,17 @@ public class Gremlin {
         }
     }
 //    find the four gremlin positions. They are all called G in the layout file. All four gremlins must be placed in different positions.
-    public void findGremlinPosition(char[][] layoutArray) {
-        for (int i = 0; i < layoutArray.length; i++) {
-            for (int j = 0; j < layoutArray[i].length; j++) {
-                if (layoutArray[i][j] == 'G') {
-                    GremlinX = j*SPRITESIZE;
-                    GremlinY = i*SPRITESIZE;
-                    layoutArray[i][j] = ' ';
-                }
-            }
-        }
-    }
+//    public void findGremlinPosition(char[][] layoutArray) {
+//        for (int i = 0; i < layoutArray.length; i++) {
+//            for (int j = 0; j < layoutArray[i].length; j++) {
+//                if (layoutArray[i][j] == 'G') {
+//                    GremlinX = j*SPRITESIZE;
+//                    GremlinY = i*SPRITESIZE;
+//                    layoutArray[i][j] = ' ';
+//                }
+//            }
+//        }
+//    }
 
     public void left() {
         GremlinX -= GremlinSpeed;
@@ -77,7 +86,6 @@ public class Gremlin {
 
     public void draw(App app) {
         app.image(app.gremlin, GremlinX, GremlinY);
-        right();
     }
 
 }
