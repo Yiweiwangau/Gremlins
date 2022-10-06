@@ -19,9 +19,6 @@ public class Player {
         playerDirection = "right";
     }
 
-    public void move() {
-
-    }
     public void findPlayerPosition(char[][] layoutArray) {
         for (int i = 0; i < layoutArray.length; i++) {
             for (int j = 0; j < layoutArray[i].length; j++) {
@@ -103,14 +100,19 @@ public class Player {
     }
 
     public void draw(App app) {
-        if (playerDirection.equals("right")) {
-            app.image(app.wizardright, playerX, playerY);
-        } else if (playerDirection.equals("left")) {
-            app.image(app.wizardleft, playerX, playerY);
-        } else if (playerDirection.equals("up")) {
-            app.image(app.wizardup, playerX, playerY);
-        } else if (playerDirection.equals("down")) {
-            app.image(app.wizarddown, playerX, playerY);
+        switch (playerDirection) {
+            case "right":
+                app.image(app.wizardright, playerX, playerY);
+                break;
+            case "left":
+                app.image(app.wizardleft, playerX, playerY);
+                break;
+            case "up":
+                app.image(app.wizardup, playerX, playerY);
+                break;
+            case "down":
+                app.image(app.wizarddown, playerX, playerY);
+                break;
         }
         checkPlayerCollision(app.layoutArray);
         checkPlayerPosition();

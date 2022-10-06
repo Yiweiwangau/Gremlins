@@ -41,7 +41,7 @@ public class App extends PApplet {
     public Gremlin gremlin3 = new Gremlin(0, 0);
     public Gremlin gremlin4 = new Gremlin(0, 0);
     public Gremlin[] gremlins = {gremlin1, gremlin2, gremlin3, gremlin4};
-
+//    public Gremlin[] gremlins = {gremlin1};
 
     public App() {
         this.configPath = "config.json";
@@ -92,11 +92,6 @@ public class App extends PApplet {
                     gremlinPosition[count][1] = i;
                     count++;
                 }
-            }
-        }
-        for (int i = 0; i<gremlinPosition.length; i++) {
-            for (int j = 0; j<gremlinPosition[i].length; j++) {
-                System.out.println(gremlinPosition[i][j]);
             }
         }
         for (int i = 0; i<gremlins.length; i++) {
