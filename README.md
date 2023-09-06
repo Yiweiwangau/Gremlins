@@ -1,4 +1,4 @@
-# Gremlins Game
+# Wizard in Dungeon
 
 An exciting game built using the Processing framework. The game is based on the concept of a player navigating through different levels by defeating or avoiding gremlins.
 ## Design
