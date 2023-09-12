@@ -1,6 +1,9 @@
 # Wizard in Dungeon
 
 An exciting game built using the Processing framework. The game is based on the concept of a player navigating through different levels by defeating or avoiding gremlins.
+![image](https://github.com/yiweiwang-yw/Wizard-in-Dungeon/assets/81563224/61045569-4ee7-45ac-9752-94352d04f225)
+
+
 ## Design
 
 The game has been structured using the following design elements:
@@ -24,13 +27,15 @@ The game has been structured using the following design elements:
 
 ### Powerup Implementation
 
-- **Icon**: Represented by a star icon.
+- **Icon**: Represented by a star icon. ![image](https://github.com/yiweiwang-yw/Wizard-in-Dungeon/assets/81563224/ddfb1201-001e-4402-bef5-e15b68208190)
 - **Functionality**: Boosts player's speed twofold upon collection.
 - **Duration**: Lasts for 10 seconds with a cooldown of another 10 seconds. Settings can be adjusted in the `generateLayout()` function in `App.java`.
 
-### Extension - Portal Implementation
+### Portal Implementation
 
 - Adds an interesting element to the game where a player can step onto a portal and get teleported to a random tile on another random portal in the direction without a wall. Four portals are included in the game.
+  ![image](https://github.com/yiweiwang-yw/Wizard-in-Dungeon/assets/81563224/6c96f136-12f0-4bbb-94f6-3d38e8ade36b)
+
 
 ## Test Coverage
 
